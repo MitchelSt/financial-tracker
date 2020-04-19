@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 import newId from '../../utils/newId'
 
@@ -9,8 +9,9 @@ export const AddTransaction = (newId) => {
     const [text, setText] = useState('')
     const [amount, setAmount] = useState('')
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
     e.preventDefault()
+    e.target.reset()
 
         const newTransaction = {
             id: newId,
@@ -19,6 +20,9 @@ export const AddTransaction = (newId) => {
         }
 
         addTransaction(newTransaction)
+
+        setText('')
+        setAmount('')
     }
 
     return (
@@ -32,6 +36,8 @@ export const AddTransaction = (newId) => {
                 placeholder="Enter text..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                required
+                autoFocus
                 />
                 </div>
                 <div className="form-control">
@@ -44,9 +50,11 @@ export const AddTransaction = (newId) => {
                 placeholder="Enter amount..."
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
+                required
                 />
                 </div>
-                <button className="btn">Add transaction</button>
+                <button
+                className="btn">Add transaction</button>
             </form>
         </div>
     )
