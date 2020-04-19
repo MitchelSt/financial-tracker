@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 
-import Transaction from '../Transaction/Transaction'
+import { Transaction } from '../Transaction/Transaction'
 
 
 export default function TransactionList() {
