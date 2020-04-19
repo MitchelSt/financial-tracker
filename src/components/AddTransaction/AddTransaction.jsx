@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 import newId from '../../utils/newId'
 
@@ -14,7 +14,7 @@ export const AddTransaction = (newId) => {
     e.target.reset()
 
         const newTransaction = {
-            id: newId,
+            id: Math.random(),
             text,
             amount: +amount
         }
